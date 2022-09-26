@@ -19,7 +19,8 @@ function TransactionsList() {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {/* render a list of <Transaction> components here */}
+        {/* render a list of <Transaction> components here */
+       }
       </tbody>
     </table>
   );
