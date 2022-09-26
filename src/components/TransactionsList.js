@@ -1,7 +1,7 @@
 import React from "react";
 import Transaction from "./Transaction";
 
-function TransactionsList() {
+function TransactionsList(transactions) {
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -20,7 +20,13 @@ function TransactionsList() {
           </th>
         </tr>
         {/* render a list of <Transaction> components here */}
-        <Transaction />
+        {transactions.map(transaction=>{
+          return <Transaction 
+          date={transaction.date}
+          description={transaction.description}
+          category={transaction.amount}
+          key={transaction.id}/>
+        })};
         
       </tbody>
     </table>

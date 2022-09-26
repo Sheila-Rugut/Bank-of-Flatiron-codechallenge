@@ -4,10 +4,13 @@ import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
 function AccountContainer() {
+  function handleUpdateOnSubmission(AddTransactionForm){
+  console.log(AddTransactionForm)
+  }
   return (
     <div>
       <Search />
-      <AddTransactionForm />
+      <AddTransactionForm onSubmission={handleUpdateOnSubmission}/>
       <TransactionsList />
     </div>
   );

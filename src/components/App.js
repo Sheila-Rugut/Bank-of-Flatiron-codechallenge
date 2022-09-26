@@ -7,10 +7,10 @@ import TransactionsList from './TransactionsList';
 function App() {
   const[transactions,setTransactions]=useState([]);
 useEffect(()=>{
-  fetch("http://localhost:8001/transactions")
+  fetch("http://localhost:8000/transactions")
   .then(resp=>resp.json())
-  .then(transac=>setTransactions(transac))
-},[]);
+  .then(data=>setTransactions(data))
+}, []);
 console.log(transactions)
   return (
     <div className="ui raised segment">
@@ -18,6 +18,8 @@ console.log(transactions)
         <h2>The Royal Bank of Flatiron</h2>
       </div>
       <AccountContainer />
+      <TransactionsList transactions={transactions}/>
+  
     </div>
   );
 }
