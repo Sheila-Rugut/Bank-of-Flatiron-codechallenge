@@ -13,10 +13,22 @@ useEffect(()=>{
   .then(data=>setTransactions(data))
 }, []);
 console.log(transactions)
-function handleUpdateOnSubmission(AddTransaction){
-  console.log(AddTransaction)
-  setTransactions(transactions=>[...transactions,AddTransaction])
+function handleUpdateOnSubmission(addTransaction){
+  console.log(addTransaction)
+  setTransactions(transactions=>[...transactions,addTransaction])
+  const serverOptions={
+    method: "POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringIfy(addTransaction)
   }
+  fetch("http://localhost:8000/transactions",serverOptions)
+  .then(r=>r.json())
+  .then(newItem=>setTransactions(updatedTransactions=>[...updatedTransactions,newItem]))
+  .catch(error=>console.log(error))  
+}
+
   return (
     <div className="ui raised segment">
       <div className="ui segment violet inverted">
