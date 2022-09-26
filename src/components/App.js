@@ -2,6 +2,7 @@
 import React,{useEffect,useState} from 'react';
 import AccountContainer from "./AccountContainer";
 import TransactionsList from './TransactionsList';
+import AddTransactionForm from "./AddTransactionForm";
 
 
 function App() {
@@ -12,6 +13,10 @@ useEffect(()=>{
   .then(data=>setTransactions(data))
 }, []);
 console.log(transactions)
+function handleUpdateOnSubmission(AddTransaction){
+  console.log(AddTransaction)
+  setTransactions(transactions=>[...transactions,AddTransaction])
+  }
   return (
     <div className="ui raised segment">
       <div className="ui segment violet inverted">
@@ -19,7 +24,7 @@ console.log(transactions)
       </div>
       <AccountContainer />
       <TransactionsList transactions={transactions}/>
-  
+      <AddTransactionForm onSubmission={handleUpdateOnSubmission}/>
     </div>
   );
 }
