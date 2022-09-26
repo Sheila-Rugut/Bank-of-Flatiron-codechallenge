@@ -1,7 +1,17 @@
-import React from "react";
+//import React from "react";
+import React,{useEffect,useState} from 'react';
 import AccountContainer from "./AccountContainer";
+import TransactionsList from './TransactionsList';
+
 
 function App() {
+  const[transactions,setTransactions]=useState([]);
+useEffect(()=>{
+  fetch("http://localhost:8001/transactions")
+  .then(resp=>resp.json())
+  .then(transac=>setTransactions(transac))
+},[]);
+console.log(transactions)
   return (
     <div className="ui raised segment">
       <div className="ui segment violet inverted">
